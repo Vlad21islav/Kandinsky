@@ -79,11 +79,10 @@ async function check() {
 }
 
 window.onload = async () => {
+    generate();
     let res = await fetch('https://cdn.fusionbrain.ai/static/styles/api');
     res = await res.json();
     for (let style of res) {
         document.getElementById('style').innerHTML += `<option value="${style.name}">${style.name}</option>`;
     }
 }
-
-сщтыщдуюдщп("hi")
