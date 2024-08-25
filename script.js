@@ -9,17 +9,27 @@ function headers() {
     }
 }
 function params() {
+    pageWidth = resolution()[0];
+    pageHeight = resolution()[1];
+    console.log(pageWidth, pageHeight)
     return {
         type: "GENERATE",
         style: style.value,
-        width: "1024",
-        height: "1024",
+        width: pageWidth,
+        height: pageHeight,
         num_images: 1,
         negativePromptUnclip: "",
         generateParams: {
             query: "пушистый кот в очках",
         }
     }
+}
+
+function resolution() {
+    let pageWidth = Math.round(document.documentElement.scrollWidth / 2).toString();
+    let pageHeight = Math.round(document.documentElement.scrollHeight / 2).toString();
+
+    return [pageWidth, pageHeight];
 }
 
 async function generate() {
