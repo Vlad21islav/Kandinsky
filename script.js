@@ -79,7 +79,7 @@ async function check() {
     switch (json.status) {
         case 'INITIAL':
             num++;
-            document.getElementById('num').innerHTML = num.toString() + '~/21';
+            document.getElementById('num').innerHTML = num.toString() + '/~21';
         case 'PROCESSING':
             break;
 
