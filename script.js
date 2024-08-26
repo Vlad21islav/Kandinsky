@@ -1,6 +1,6 @@
 let prd = null;
 let uuid = '';
-let num = 0
+let num = 0;
 
 function headers() {
     return {
@@ -11,28 +11,36 @@ function headers() {
 function params() {
     pageWidth = resolution()[0];
     pageHeight = resolution()[1];
-    console.log(pageWidth, pageHeight)
     return {
         type: "GENERATE",
         style: style.value,
-        width: pageWidth,
-        height: pageHeight,
+        width: "1024",
+        height: "1024",
         num_images: 1,
         negativePromptUnclip: "",
         generateParams: {
-            query: "пушистый кот в очках",
+            query: document.getElementById("query").value,
         }
     }
 }
 
 function resolution() {
-    let pageWidth = Math.round(document.documentElement.scrollWidth / 2).toString();
-    let pageHeight = Math.round(document.documentElement.scrollHeight / 2).toString();
+    let pageWidth = document.documentElement.scrollWidth
+    let pageHeight = document.documentElement.scrollHeight
 
     return [pageWidth, pageHeight];
 }
 
 async function generate() {
+    document.getElementById("query").style = "display: none;";
+    document.getElementById("btn").style = "display: none;";
+
+    if (resolution()[0] > resolution()[1]) {
+        document.getElementById("img").style = "border-radius: 5px;height: 86%;"
+    } else {
+        document.getElementById("img").style = "border-radius: 5px;width: 100%;"
+    }
+
     let model_id = 0;
     {
         let res = await fetch('https://api-key.fusionbrain.ai/key/api/v1/models', {
@@ -89,7 +97,6 @@ async function check() {
 }
 
 window.onload = async () => {
-    generate();
     let res = await fetch('https://cdn.fusionbrain.ai/static/styles/api');
     res = await res.json();
     for (let style of res) {
