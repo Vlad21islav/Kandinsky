@@ -12,6 +12,7 @@ function params() {
     pageWidth = resolution()[0];
     pageHeight = resolution()[1];
     return {
+        censored: true, 
         type: "GENERATE",
         style: style.value,
         width: "1024",
