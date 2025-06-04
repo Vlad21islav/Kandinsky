@@ -4,8 +4,8 @@ let num = 0;
 
 function headers() {
     return {
-        'X-Key': 'Key ' + "192AF6BD6227D519E76DAB5CF92927D8",
-        'X-Secret': 'Secret ' + "7F94C1B52466DE200676CFD63B6CE4AB",
+        'X-Key': 'Key ' + "7EFB01015D3204CF36339F7F1AA91C63",
+        'X-Secret': 'Secret ' + "E5A34DDA35CFED2629E95CD6D584C1D4",
     }
 }
 function params() {
